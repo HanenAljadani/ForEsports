@@ -38,7 +38,7 @@ function Navbar() {
             Esport<span className="text-purple-500">s</span> Blog
           </a>
           <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-            <li><a class="hover:text-gray-200" href="/home">Home</a></li>
+            <li><a class="hover:text-gray-200" href="/home">Homeeeee</a></li>
             <li><a class="hover:text-gray-200" href="#">Blog</a></li>
             <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
      
