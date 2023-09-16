@@ -21,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <AuthContextProvider>
         <Navbar />
+      
         <div className="flex flex-col h-screen">
 
             {children}
