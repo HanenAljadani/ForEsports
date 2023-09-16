@@ -10,7 +10,7 @@ import { UserAuth } from "../../context/authContext"
 function page() {
  // const  googleSignIn = UserAuth();
 
- const { user, googleSignIn, logOut } = UserAuth();
+ const {  googleSignIn } = UserAuth();
  
  
  
