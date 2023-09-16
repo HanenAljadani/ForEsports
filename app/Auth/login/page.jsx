@@ -1,6 +1,6 @@
 
 "use client";
-import { UserAuth } from "app/context/authContext.js"
+//import { UserAuth } from "app/context/authContext.js"
 
 
 //import { UserAuth } from ".../context/authContext"
@@ -11,14 +11,14 @@ import { UserAuth } from "app/context/authContext.js"
 
 function page() {
 
- const googleSignIn = UserAuth();
+ /*const googleSignIn = UserAuth();
     const handleSignIn = async () => {
         try {
           await googleSignIn();
         } catch (error) {
           console.log(error);
         }
-      };
+      };*/
   return (
 
     <div class="Pt-20 grid place-items-center mx-2 my-20 sm:my-auto">
@@ -54,13 +54,14 @@ function page() {
                 </button>
                 
             </form>
-            <button  onClick={handleSignIn}
+            <button 
                     class="w-full py-3 mt-10 bg-orange-500  
                     font-medium text-white uppercase
                     border-2 rounded-lg border-orange-500 
                     focus:outline-none hover:bg-transparent hover:shadow-none hover:text-orange-500">
                     Login with Google 
                 </button>
+                {/**onClick={handleSignIn} */}
         </div>
 
     </div>
