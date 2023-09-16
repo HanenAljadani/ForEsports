@@ -1,6 +1,8 @@
 
+"use client";
 
 import { useContext, createContext, useState, useEffect } from "react";
+import { useRouter } from 'next/navigation'
 import {
   signInWithPopup,
   signOut,
@@ -13,22 +15,25 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
+   // router.push('/home');
   };
 
   const logOut = () => {
     signOut(auth);
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      router.push('/home');
     });
     return () => unsubscribe();
-  }, [user]);*/
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ user, googleSignIn, logOut }}>

@@ -1,9 +1,32 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link"
+import { UserAuth } from "../context/authContext"
+
 function Navbar() {
 
 
-  //const { user, googleSignIn, logOut } = UserAuth();
- 
+  const { user , logOut } = UserAuth();
+  const [loading, setLoading] = useState(true);
+
+
+   
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      setLoading(false);
+    };
+    checkAuthentication();
+  }, [user]);
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
    
 
@@ -19,9 +42,20 @@ function Navbar() {
             <li><a class="hover:text-gray-200" href="#">Blog</a></li>
             <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
      
+           {loading ? null : !user ? (
+            <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
             <li><Link class="hover:text-gray-200" href="/Auth/login">Login</Link></li>
             <li><Link class="hover:text-gray-200" href="/Auth/signup">Signup</Link></li>
+            </ul>
+            ): (
 
+              <li><button class="hover:text-gray-200" onClick={handleSignOut} >Signout</button></li>
+
+
+            )
+
+
+            }
 
 
           </ul>
