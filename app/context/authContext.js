@@ -2,12 +2,13 @@
 "use client";
 
 import { useContext, createContext, useState, useEffect } from "react";
-//import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
@@ -16,33 +17,56 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
- // const router = useRouter();
+  const router = useRouter();
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
-   // router.push('/home');
+    window.location.href = "/home"
   };
 
   const logOut = () => {
     signOut(auth);
   };
   
-  const signup =(email ,password) =>{
 
-  createUserWithEmailAndPassword(auth,email,password);
+  const signup = async (email, password) => {
 
-  }
+    try {
+      const user2 = createUserWithEmailAndPassword(auth,email,password);
+      const user1 =user2.user;
+      setUser(user1);
+      window.location.href = "/home"
+
+      
+  
+    } catch (error) {
+        alert(error.message);
+      }
+    
+
+  };
+  const login = async (email ,password) =>{
+
+   try{
+   const user2 =  await signInWithEmailAndPassword(auth,email,password);
+   const user1 =user2.user;
+   setUser(user1);
+   window.location.href = "/home"
+   }catch(error){
+    alert(error);
+   } 
+  
+    }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-    //  router.push('/home');
     });
     return () => unsubscribe();
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user, googleSignIn, logOut ,signup }}>
+    <AuthContext.Provider value={{ user, googleSignIn, logOut ,signup, login }}>
       {children}
     </AuthContext.Provider>
   );
