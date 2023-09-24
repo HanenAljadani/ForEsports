@@ -5,7 +5,7 @@ import React, {useState}  from "react";
 
 import { UserAuth } from "../../context/authContext"
 
-function page() {
+function Page() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -65,13 +65,6 @@ function page() {
                     focus:outline-none hover:bg-transparent hover:shadow-none hover:text-purple-500">
                     Signup
                 </button>
-               {/**  <button type="submit"
-                    class="w-full py-3 mt-10 bg-orange-500  
-                    font-medium text-white uppercase
-                   border-2 rounded-lg border-orange-500 
-                    focus:outline-none hover:bg-transparent hover:shadow-none hover:text-orange-500">
-                    Login with Google 
-                </button>*/}
             </form>
         </div>
     </div>
@@ -86,4 +79,4 @@ function page() {
 
 }
 
-export default page;
+export default Page;
