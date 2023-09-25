@@ -38,14 +38,14 @@ function Navbar() {
             Esport<span className="text-purple-500">s</span> Blog
           </a>
           <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-            <li><a class="hover:text-gray-200" href="/Home">Home</a></li>
+            <li><a class="hover:text-gray-200" href="/home">Home</a></li>
             <li><a class="hover:text-gray-200" href="#">Blog</a></li>
             <li><a class="hover:text-gray-200" href="#">Community</a></li>
             <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
            {   loading ? null :!user ? (
             <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-            <li><Link class="hover:text-gray-200" href="/Auth/Login">Login</Link></li>
-            <li><Link class="hover:text-gray-200" href="/Auth/Signup">Signup</Link></li>
+            <li><Link class="hover:text-gray-200" href="/Auth/login">Login</Link></li>
+            <li><Link class="hover:text-gray-200" href="/Auth/signup">Signup</Link></li>
             </ul>
             ): (
 
