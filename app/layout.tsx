@@ -25,7 +25,7 @@ export default function RootLayout({
         <div className="flex flex-col h-screen">
 
             {children}
-
+              
         </div>
         </AuthContextProvider>
       </body>
