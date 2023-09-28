@@ -4,6 +4,8 @@ import React , {useState} from "react";
 
 import { UserAuth } from "../../context/authContext"
 
+import { ToastContainer } from 'react-toastify';
+
 
 
 
@@ -18,6 +20,9 @@ function Page() {
  const handleSignIn = async () => {
         try {
           await googleSignIn();
+
+          
+       //   window.location.href = "/home" 
           
         } catch (error) {
           console.log(error);
@@ -83,7 +88,7 @@ function Page() {
                     focus:outline-none hover:bg-transparent hover:shadow-none hover:text-orange-500">
                     Login with Google 
                 </button>
-                {/**onClick={handleSignIn} */}
+                <ToastContainer />
         </div>
 
     </div>

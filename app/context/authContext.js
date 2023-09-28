@@ -11,50 +11,88 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
 
-  const googleSignIn = () => {
+   function showError(txt) {
+    toast.error(txt, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+    
+  };
+
+   function showMsg (txt) {
+    toast.success(txt, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+    
+  };
+
+  const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    await signInWithPopup(auth, provider)
+    showMsg("Login Successful!");
+    await delay(3000);
+    window.location.href = "/home"
   };
 
   const logOut = () => {
     signOut(auth);
   };
-  
+
 
   const signup = async (email, password) => {
 
     try {
-      const user2 = createUserWithEmailAndPassword(auth,email,password);
-      const user1 =user2.user;
-      setUser(user1);
+      const user2 = await createUserWithEmailAndPassword(auth, email, password);
+      setUser(user2.user);
+      showMsg("Created Successfully");
+      await delay(3000);
       window.location.href = "/home"
 
-      
-  
     } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        showError("email already in use");
+      } else {
         alert(error.message);
       }
-    
+    }};
 
-  };
-  const login = async (email ,password) =>{
-
-   try{
-   const user2 =  await signInWithEmailAndPassword(auth,email,password);
-   const user1 =user2.user;
-   setUser(user1);
-   window.location.href = "/home"
-   }catch(error){
-    alert(error);
-   } 
-  
+  const login = async (email, password) => {
+    try {
+      const user2 = await signInWithEmailAndPassword(auth, email, password);
+      setUser(user2.user);
+      showMsg("Login Successful!");
+      await delay(3000);
+      window.location.href = "/home"
+    } catch (error) {
+      //auth/invalid-login-credentials
+      showError("Incorrect email or password");
     }
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -63,7 +101,7 @@ export const AuthContextProvider = ({ children }) => {
   }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user, googleSignIn, logOut ,signup, login }}>
+    <AuthContext.Provider value={{ user, googleSignIn, logOut, signup, login }}>
       {children}
     </AuthContext.Provider>
   );
