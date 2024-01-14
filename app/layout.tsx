@@ -7,7 +7,7 @@ import { AuthContextProvider } from "./context/authContext";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'EsportsBlog',
+  title: 'ForEsports',
   description: '',
 }
 
@@ -22,7 +22,7 @@ export default function RootLayout({
       <AuthContextProvider>
         <Navbar />
       
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col  bg-grey-300 h-full">
 
             {children}
               

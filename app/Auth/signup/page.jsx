@@ -38,7 +38,7 @@ function Page() {
 
     return (
 
-        <div class="Pt-20 grid place-items-center mx-2 my-20 sm:my-auto">
+        <div class="Pt-20 h-screen grid place-items-center mx-2 my-20 sm:my-auto">
 
             <div class="w-11/12 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 
             px-6 py-10 sm:px-10 sm:py-6 
