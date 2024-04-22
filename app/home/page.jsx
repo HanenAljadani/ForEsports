@@ -1,9 +1,13 @@
+
+import Landing from "./landingPage/page";
+
 function page() {
   return (
 
 
 <div className="h-screen">
-  Hi
+<Landing/>
+
 </div>
 
   )
