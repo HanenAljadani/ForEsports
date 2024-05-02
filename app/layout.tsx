@@ -23,7 +23,7 @@ export default function RootLayout({
       <AuthContextProvider>
         <Navbar />
       
-        <div className="flex flex-col  bg-grey-300 h-full">
+        <div className="flex flex-col   h-full">
 
             {children}
               
