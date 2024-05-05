@@ -1,16 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link"
-import { UserAuth } from "../context/authContext"
+import React from "react";
+//import { useState, useEffect } from "react";
+//import Link from "next/link"
+//import { UserAuth } from "../context/authContext"
 
 function Navbar() {
 
 
-  const { user , logOut } = UserAuth();
-  const [loading, setLoading] = useState(true);
+ // const { user , logOut } = UserAuth();
+ //const [loading, setLoading] = useState(true);
 
    
-  useEffect(() => {
+ {/**  useEffect(() => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
       setLoading(false);
@@ -24,7 +25,7 @@ function Navbar() {
     } catch (error) {
       console.log(error);
     }
-  };
+  };*/}
 
   return (
       <nav className="flex justify-between  w-screen bg-white">
@@ -37,7 +38,7 @@ function Navbar() {
             <li><a className="hover:text-purple-500" href="/blog">Blog</a></li>
             <li><a className="hover:text-purple-500" href="/tournaments">Tournaments</a></li>
             <li><a className="hover:text-purple-500" href="#">Community</a></li>
-           {   loading ? null :!user ? (
+       {/**     {   loading ? null :!user ? (
             <ul className=" flex  md:flex-inline font-light space-x-2 pl-4 text-[8px] md:text-base md:flex md:px-4 mx-auto md:font-semibold md:font-heading md:space-x-12">
               
             <li><Link className="hover:text-purple-500" href="/Auth/login">Login</Link></li>
@@ -48,7 +49,7 @@ function Navbar() {
               <li><a className="hover:text-purple-500 cursor-pointer" onClick={handleSignOut} >Signout</a></li>
                
 
-            ) }
+            ) }*/}
 
 
           </ul>
