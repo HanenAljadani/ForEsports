@@ -1,10 +1,17 @@
+"use client"
 
-
+import Link from 'next/link';
 function tournaments(){
+  
   return(
     <>
-   <div className="min-h-screen  from-purple-500 to-yellow-200">
+   <div className="min-h-screen  ">
    <h1 className="text-white-900 flex justify-center pt-8 text-xl md:text-2xl font-bold">Tournaments</h1>
+   <div className="flex justify-end pr-20">
+<Link href="/tournaments/newtournament"><button className="border-2 border-orange-400 rounded-xl hover:bg-orange-400 w-[110px] h-[40px] text-orange-400 hover:text-white"
+>
+ Create
+</button></Link></div>
 <div class="flex justify-center items-center py-20">
 
   <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
