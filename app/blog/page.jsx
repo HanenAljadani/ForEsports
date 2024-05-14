@@ -9,7 +9,7 @@ import {
 import { db } from "../firebase";
 import React from "react";
 
-function blog(){
+function Blog(){
   const [articles, setArticles] = useState([
   ]);
  // const [filter, setFilter] = useState('');
@@ -73,4 +73,4 @@ function blog(){
   )
 }
 
-export default blog;
+export default Blog;

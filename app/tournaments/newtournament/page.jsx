@@ -1,6 +1,6 @@
 import React from 'react'
 import { ToastContainer, toast } from "react-toastify";
-export default function new_tournament() {
+export default function New_tournament() {
   return (
     <div className="min-h-screen  "> <>
     <ToastContainer

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link';
-function tournaments(){
+function Tournaments(){
   
   return(
     <>
@@ -65,4 +65,4 @@ function tournaments(){
   )
 }
 
-export default tournaments; 
+export default Tournaments; 
