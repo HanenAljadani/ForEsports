@@ -27,7 +27,7 @@ function Blog(){
   }, []);
   return(
 <>
-<div className=" flex flex-col justify-center">
+<div className="min-h-screen  flex flex-col justify-center">
                 <div className=" relative m-3 flex flex-wrap mx-auto justify-center ">
        
       {articles.map((item, id) => (
